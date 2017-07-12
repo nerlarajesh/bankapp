@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/assets/styles/style.min.css"/>
+<header>
+    <div>
+        <img src="/img/bank.png" alt="Home"/>
+    </div>
+</header>
+<div class="main-div">
+<form action="/new" method="POST">
+    <span class="red">{{errMessage}}</span>
+    <h1>Add New Cards Details</h1>
+    <input type="text" name="cardName" placeholder="Enter the Card Name"/>
+    <input type="text" name="location" placeholder="Enter the Location"/>
+    <div class="select-style">
+        <span class="arrow"></span>
+     <select name="path">
+         <option>Please Select the Card</option>
+        {{#each dropdownData}}
+            <option value="/img/{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+    </div>
+    <input type="submit" name="submit" value="Add New Card" title="Add New Card"/>
+</form>
+<ul>
+    {{#each data}}
+        <li>
+            <div>
+                <img src="{{this.path}}" alt="Image Not Found" title="{{this.cardName}}"/>
+                <span>{{this.cardName}}</span>
+                <div class="links">
+                    <a href="/view" title="View">View</a> | 
+                    <a href="/delete?id={{this.id}}" title="Delete">Delete</a>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</ul>
+</div>
+<footer></footer>
